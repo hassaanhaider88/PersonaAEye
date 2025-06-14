@@ -1,0 +1,167 @@
+.burger {
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+  transform: scale(0.7) !important;
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: white;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-100%);
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
+  transform: rotate(45deg);
+  top: 0px;
+  left: 5px;
+}
+
+.burger input:checked ~ span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
+  transform: rotate(-45deg);
+  top: 28px;
+  left: 5px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 25s linear infinite;
+}
+
+.BoxShadow{
+  box-shadow: inset 0px 10px 20px #9070cf
+}
+.BxShadow{
+  box-shadow: inset 17px 14px 18px 4px #24104D,inset -17px -14px 18px 4px #24104D;
+}
+
+.WaitContainer {
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 20px 20px 90px #000000b0;
+  background-color: #24104D;
+  background-image: 
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 1px, transparent 0),
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 0),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+  background-size: 
+    40px 40px,
+    20px 20px,
+    20px 20px;
+  background-position: 
+    0 0,
+    0 0,
+    0 0;
+  position: relative;
+  overflow: hidden;
+  animation: backgroundMove 25s linear infinite;
+}
+
+@keyframes backgroundMove {
+  0% {
+    background-position: 
+      0 0,
+      0 0,
+      0 0;
+  }
+  100% {
+    background-position: 
+      200px 200px,
+      100px 100px,
+      50px 50px;
+  }
+}
+
+.WaitContainer::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.03) 10px,
+    rgba(255, 255, 255, 0.03) 20px
+  );
+  z-index: 1;
+  opacity: 0.5;
+  animation: diagonalRotate 60s linear infinite;
+}
+
+
+.WaitContainer::after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.07) 1px,
+    transparent 1px
+  );
+  background-size: 60px 60px;
+  z-index: 2;
+  opacity: 0.5;
+  animation: pulseScale 8s ease-in-out infinite alternate;
+}
+
+@keyframes pulseScale {
+  0% {
+    opacity: 0.4;
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1.05) translate(5px, 5px);
+  }
+}
